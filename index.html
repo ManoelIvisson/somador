@@ -4,12 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Circuito Somador</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <input type="number" id="entradaA">
-    <input type="number" name="" id="entradaB">
-    <input type="text" id="res">
-    <button onclick="calcula()">Calcular</button>
+    <div class="circuito">
+        <h1>Meio Somador</h1>
+        <label for="entradaA">A</label>
+        <input type="number" name="entradaA" id="entradaA">
+        <label for="entradaB">B</label>
+        <input type="number" name="entradaB" id="entradaB">
+
+        <p id="soma">Soma = </p>
+        <p id="carry">Carry = </p>
+
+        <button onclick="calcula()">Calcular</button>
+    </div>
+    <div class="circuito">
+        <h1>Somador Completo</h1>
+        <label for="entradaA">A</label>
+        <input type="number" name="entradaA" id="entradaA">
+        <label for="entradaB">B</label>
+        <input type="number" name="entradaB" id="entradaB">
+        <label for="carryIn">Cin</label>
+        <input type="number" name="entradaB" id="entradaB">
+
+        <p id="soma">Soma = </p>
+        <p id="carry">Carry = </p>
+
+        <button onclick="calcula()">Calcular</button>
+    </div>
 </body>
 <script src="js.js"></script>
 </html>

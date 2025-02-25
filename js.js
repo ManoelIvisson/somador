@@ -26,18 +26,34 @@ function meioSomador(valor1, valor2) {
 }
 
 function limpaResultados() {
-    document.getElementById('soma').textContent = "Soma = ";
-    document.getElementById('carry').textContent = "Carry = ";
+    document.getElementById('somaMS').textContent = "Soma = ";
+    document.getElementById('carryMS').textContent = "Carry = ";
+
+    document.getElementById('somaSC').textContent = "Soma = ";
+    document.getElementById('carrySC').textContent = "Carry = ";
 }
 
-function calcula() {
+function calculaMeioSomador() {
     limpaResultados();
-    let a = document.getElementById('entradaA').value;
-    let b = document.getElementById('entradaB').value;
+    let a = document.getElementById('entradaAMS').value;
+    let b = document.getElementById('entradaBMS').value;
 
     let soma = meioSomador(a, b)[0];
     let carry = meioSomador(a, b)[1];
 
-    document.getElementById('soma').textContent += soma;
-    document.getElementById('carry').textContent += carry;
+    document.getElementById('somaMS').textContent += soma;
+    document.getElementById('carryMS').textContent += carry;
+}
+
+function calculaSomadorCompleto() {
+    limpaResultados();
+    let a = document.getElementById('entradaAMS').value;
+    let b = document.getElementById('entradaBMS').value;
+    let cin = document.getElementById('cin').value;
+
+    let soma = meioSomador(a, b)[0];
+    let carry = meioSomador(a, b)[1];
+
+    document.getElementById('somaMS').textContent += soma;
+    document.getElementById('carryMS').textContent += carry;
 }

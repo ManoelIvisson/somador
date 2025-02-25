@@ -9,29 +9,27 @@
 <body>
     <div class="circuito">
         <h1>Meio Somador</h1>
-        <label for="entradaA">A</label>
-        <input type="number" name="entradaA" id="entradaA">
-        <label for="entradaB">B</label>
-        <input type="number" name="entradaB" id="entradaB">
+        <label for="entradaAMS">A</label>
+        <input type="number" name="entradaAMS" id="entradaAMS"> 
+        <label for="entradaBMS">B</label>
+        <input type="number" name="entradaBMS" id="entradaBMS">
 
-        <p id="soma">Soma = </p>
-        <p id="carry">Carry = </p>
+        <p id="somaMS">Soma = </p>
+        <p id="carryMS">Carry = </p>
 
-        <button onclick="calcula()">Calcular</button>
+        <button onclick="calculaMeioSomador()">Calcular</button>
     </div>
     <div class="circuito">
         <h1>Somador Completo</h1>
-        <label for="entradaA">A</label>
-        <input type="number" name="entradaA" id="entradaA">
-        <label for="entradaB">B</label>
-        <input type="number" name="entradaB" id="entradaB">
-        <label for="carryIn">Cin</label>
-        <input type="number" name="entradaB" id="entradaB">
+        <label for="entradaASC">A</label>
+        <input type="number" name="entradaASC" id="entradaASC">
+        <label for="entradaBSC">B</label>
+        <input type="number" name="entradaBSC" id="entradaBSC">
 
-        <p id="soma">Soma = </p>
-        <p id="carry">Carry = </p>
+        <p id="somaSC">Soma = </p>
+        <p id="carrySC">Carry = </p>
 
-        <button onclick="calcula()">Calcular</button>
+        <button onclick="calculaSomadorCompleto()">Calcular</button>
     </div>
 </body>
 <script src="js.js"></script>

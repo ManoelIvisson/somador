@@ -1,5 +1,128 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    color: #2d3748;
+    line-height: 1.6;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    text-align: center;
+    color: #4a5568;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
 .circuito {
-    border: solid black 5px;
-    padding: 10px;
-    margin: 10px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    margin-bottom: 20px;
+    max-width: 400px;
+    width: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.circuito:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.input-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Espaçamento entre os botões */
+    margin-bottom: 15px;
+}
+
+.input-group {
+    text-align: center;
+    place-items: center;
+    flex: 1; /* Faz com que os grupos ocupem o espaço disponível */
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #4a5568;
+}
+
+.toggle-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #e2e8f0;
+    border: none;
+    color: #4a5568;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toggle-button.active {
+    background-color: #667eea;
+    color: white;
+}
+
+.toggle-button:hover {
+    transform: scale(1.1);
+}
+
+.calculate-button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.calculate-button:hover {
+    background-color: #5a67d8;
+    transform: translateY(-2px);
+}
+
+.calculate-button:active {
+    transform: translateY(0);
+}
+
+.resultados {
+    text-align: center;
+    margin-top: 15px;
+}
+
+p {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #4a5568;
+}
+
+#somaMS, #carryMS, #somaSC, #carrySC {
+    font-weight: 600;
+    color: #667eea;
 }

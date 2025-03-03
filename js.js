@@ -1,12 +1,13 @@
+// Função para simular a porta AND
 function portaAND(valor1, valor2) {
     if (valor1 == 1 && valor2 == 1) {
-        console.log("Ioiosdasdf")
         return 1;
     } else {
         return 0;
     }
 }
 
+// Função para simular a porta XOR
 function portaXOR(valor1, valor2) {
     if (valor1 != valor2) {
         return 1;
@@ -15,45 +16,113 @@ function portaXOR(valor1, valor2) {
     }
 }
 
+// Função para o Meio Somador
 function meioSomador(valor1, valor2) {
-    let soma, carry = 0;
-
-    soma = portaXOR(valor1, valor2);
-    carry = portaAND(valor1, valor2);
-    console.log(carry)
-
+    let soma = portaXOR(valor1, valor2);  // Soma = A XOR B
+    let carry = portaAND(valor1, valor2); // Carry = A AND B
     return [soma, carry];
 }
 
-function limpaResultados() {
+// Função para o Somador Completo
+function somadorCompleto(a, b, cin) {
+    // Primeira operação do meio somador
+    let soma1 = portaXOR(a, b);
+    let carry1 = portaAND(a, b);
+
+    // Segunda operação do meio somador com o carry de entrada (Cin)
+    let somaFinal = portaXOR(soma1, cin);
+    let carryFinal = portaAND(soma1, cin);
+
+    // O carry final será a combinação entre o carry1 e o carryFinal
+    carryFinal = carry1 || carryFinal;
+
+    return [somaFinal, carryFinal];
+}
+
+// Função para limpar os resultados do Meio Somador
+function limpaResultadosMS() {
     document.getElementById('somaMS').textContent = "Soma = ";
     document.getElementById('carryMS').textContent = "Carry = ";
+}
 
+// Função para limpar os resultados do Somador Completo
+function limpaResultadosSC() {
     document.getElementById('somaSC').textContent = "Soma = ";
     document.getElementById('carrySC').textContent = "Carry = ";
 }
 
+// Função para alternar entre 0 e 1 nos botões
+function toggleButton(button) {
+    if (button.textContent === "0") {
+        button.textContent = "1";
+        button.classList.add("active");
+    } else {
+        button.textContent = "0";
+        button.classList.remove("active");
+    }
+    // Atualiza os cálculos automaticamente
+    if (button.id.includes("MS")) {
+        calculaMeioSomador();
+    } else if (button.id.includes("SC") || button.id.includes("Cin")) {
+        calculaSomadorCompleto();
+    }
+}
+
+// Função para obter o valor de um botão
+function getButtonValue(buttonId) {
+    return parseInt(document.getElementById(buttonId).textContent);
+}
+
+// Função para calcular o Meio Somador
 function calculaMeioSomador() {
-    limpaResultados();
-    let a = document.getElementById('entradaAMS').value;
-    let b = document.getElementById('entradaBMS').value;
+    limpaResultadosMS(); // Limpa apenas os resultados do Meio Somador
+    let a = getButtonValue("entradaAMS");
+    let b = getButtonValue("entradaBMS");
 
-    let soma = meioSomador(a, b)[0];
-    let carry = meioSomador(a, b)[1];
+    let resultado = meioSomador(a, b);
+    let soma = resultado[0];
+    let carry = resultado[1];
 
     document.getElementById('somaMS').textContent += soma;
     document.getElementById('carryMS').textContent += carry;
 }
 
+// Função para calcular o Somador Completo
 function calculaSomadorCompleto() {
-    limpaResultados();
-    let a = document.getElementById('entradaAMS').value;
-    let b = document.getElementById('entradaBMS').value;
-    let cin = document.getElementById('cin').value;
+    limpaResultadosSC(); // Limpa apenas os resultados do Somador Completo
+    let a = getButtonValue("entradaASC");
+    let b = getButtonValue("entradaBSC");
+    let cin = getButtonValue("entradaCin");
 
-    let soma = meioSomador(a, b)[0];
-    let carry = meioSomador(a, b)[1];
+    let resultado = somadorCompleto(a, b, cin);
+    let soma = resultado[0];
+    let carry = resultado[1];
 
-    document.getElementById('somaMS').textContent += soma;
-    document.getElementById('carryMS').textContent += carry;
+    document.getElementById('somaSC').textContent += soma;
+    document.getElementById('carrySC').textContent += carry;
 }
+
+// Adiciona event listeners aos botões
+document.getElementById('entradaAMS').addEventListener('click', function() {
+    toggleButton(this);
+});
+
+document.getElementById('entradaBMS').addEventListener('click', function() {
+    toggleButton(this);
+});
+
+document.getElementById('entradaASC').addEventListener('click', function() {
+    toggleButton(this);
+});
+
+document.getElementById('entradaBSC').addEventListener('click', function() {
+    toggleButton(this);
+});
+
+document.getElementById('entradaCin').addEventListener('click', function() {
+    toggleButton(this);
+});
+
+// Inicializa os cálculos ao carregar a página
+calculaMeioSomador();
+calculaSomadorCompleto();

@@ -5,32 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Circuito Somador</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="circuito">
         <h1>Meio Somador</h1>
-        <label for="entradaAMS">A</label>
-        <input type="number" name="entradaAMS" id="entradaAMS"> 
-        <label for="entradaBMS">B</label>
-        <input type="number" name="entradaBMS" id="entradaBMS">
+        <div class="input-row">
+            <div class="input-group">
+                <label for="entradaAMS">A</label>
+                <button id="entradaAMS" class="toggle-button">0</button>
+            </div>
+            <div class="input-group">
+                <label for="entradaBMS">B</label>
+                <button id="entradaBMS" class="toggle-button">0</button>
+            </div>
+        </div>
 
-        <p id="somaMS">Soma = </p>
-        <p id="carryMS">Carry = </p>
-
-        <button onclick="calculaMeioSomador()">Calcular</button>
+        <div class="resultados">
+            <p id="somaMS">Soma = </p>
+            <p id="carryMS">Carry = </p>
+        </div>
     </div>
     <div class="circuito">
         <h1>Somador Completo</h1>
-        <label for="entradaASC">A</label>
-        <input type="number" name="entradaASC" id="entradaASC">
-        <label for="entradaBSC">B</label>
-        <input type="number" name="entradaBSC" id="entradaBSC">
+        <div class="input-row">
+            <div class="input-group">
+                <label for="entradaASC">A</label>
+                <button id="entradaASC" class="toggle-button">0</button>
+            </div>
+            <div class="input-group">
+                <label for="entradaBSC">B</label>
+                <button id="entradaBSC" class="toggle-button">0</button>
+            </div>
+            <div class="input-group">
+                <label for="entradaCin">Cin</label>
+                <button id="entradaCin" class="toggle-button">0</button>
+            </div>
+        </div>
 
-        <p id="somaSC">Soma = </p>
-        <p id="carrySC">Carry = </p>
-
-        <button onclick="calculaSomadorCompleto()">Calcular</button>
+        <div class="resultados">
+            <p id="somaSC">Soma = </p>
+            <p id="carrySC">Carry = </p>
+        </div>
     </div>
+    <script src="js.js"></script>
 </body>
-<script src="js.js"></script>
 </html>

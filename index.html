@@ -1,53 +1,183 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Circuito Somador</title>
+    <title>Módulo de Somadores</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
-    <div class="circuito">
-        <h1>Meio Somador</h1>
-        <div class="input-row">
-            <div class="input-group">
-                <label for="entradaAMS">A</label>
-                <button id="entradaAMS" class="toggle-button">0</button>
+    <div class="container">
+        <!-- Meio Somador -->
+        <div class="circuito">
+            <h1>Meio Somador</h1>
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="entradaAMS">A</label>
+                    <button id="entradaAMS" class="toggle-button">0</button>
+                </div>
+                <div class="input-group">
+                    <label for="entradaBMS">B</label>
+                    <button id="entradaBMS" class="toggle-button">0</button>
+                </div>
             </div>
-            <div class="input-group">
-                <label for="entradaBMS">B</label>
-                <button id="entradaBMS" class="toggle-button">0</button>
+            <div class="resultados">
+                <p id="somaMS">Soma = </p>
+                <p id="carryMS">Carry = </p>
             </div>
-        </div>
-
-        <div class="resultados">
-            <p id="somaMS">Soma = </p>
-            <p id="carryMS">Carry = </p>
-        </div>
-    </div>
-    <div class="circuito">
-        <h1>Somador Completo</h1>
-        <div class="input-row">
-            <div class="input-group">
-                <label for="entradaASC">A</label>
-                <button id="entradaASC" class="toggle-button">0</button>
-            </div>
-            <div class="input-group">
-                <label for="entradaBSC">B</label>
-                <button id="entradaBSC" class="toggle-button">0</button>
-            </div>
-            <div class="input-group">
-                <label for="entradaCin">Cin</label>
-                <button id="entradaCin" class="toggle-button">0</button>
+            <div class="configuracao-interna">
+                <h2>Configuração Interna</h2>
+                <div class="porta-logica">
+                    <span>XOR</span> <!-- Porta XOR para a soma -->
+                </div>
+                <div class="porta-logica">
+                    <span>AND</span> <!-- Porta AND para o carry -->
+                </div>
             </div>
         </div>
 
-        <div class="resultados">
-            <p id="somaSC">Soma = </p>
-            <p id="carrySC">Carry = </p>
+        <!-- Somador Completo -->
+        <div class="circuito">
+            <h1>Somador Completo</h1>
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="entradaASC">A</label>
+                    <button id="entradaASC" class="toggle-button">0</button>
+                </div>
+                <div class="input-group">
+                    <label for="entradaBSC">B</label>
+                    <button id="entradaBSC" class="toggle-button">0</button>
+                </div>
+                <div class="input-group">
+                    <label for="entradaCin">Cin</label>
+                    <button id="entradaCin" class="toggle-button">0</button>
+                </div>
+            </div>
+            <div class="resultados">
+                <p id="somaSC">Soma = </p>
+                <p id="carrySC">Carry = </p>
+            </div>
+            <div class="configuracao-interna">
+                <h2>Configuração Interna</h2>
+                <div class="porta-logica">
+                    <span>XOR</span> <!-- Primeira porta XOR -->
+                </div>
+                <div class="porta-logica">
+                    <span>AND</span> <!-- Primeira porta AND -->
+                </div>
+                <div class="porta-logica">
+                    <span>XOR</span> <!-- Segunda porta XOR -->
+                </div>
+                <div class="porta-logica">
+                    <span>OR</span> <!-- Porta OR para o carry final -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Somador de 4 Bits -->
+        <div class="circuito">
+            <h1>Somador de 4 Bits</h1>
+            <!-- Primeira linha de inputs (A0, B0, A1, B1) -->
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="entradaA0">A0 (LSB)</label>
+                    <button id="entradaA0" class="toggle-button">0</button>
+                </div>
+                <div class="input-group">
+                    <label for="entradaB0">B0 (LSB)</label>
+                    <button id="entradaB0" class="toggle-button">0</button>
+                </div>
+                <div class="input-group">
+                    <label for="entradaA1">A1</label>
+                    <button id="entradaA1" class="toggle-button">0</button>
+                </div>
+                <div class="input-group">
+                    <label for="entradaB1">B1</label>
+                    <button id="entradaB1" class="toggle-button">0</button>
+                </div>
+            </div>
+            <!-- Segunda linha de inputs (A2, B2, A3, B3) -->
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="entradaA2">A2</label>
+                    <button id="entradaA2" class="toggle-button">0</button>
+                </div>
+                <div class="input-group">
+                    <label for="entradaB2">B2</label>
+                    <button id="entradaB2" class="toggle-button">0</button>
+                </div>
+                <div class="input-group">
+                    <label for="entradaA3">A3 (MSB)</label>
+                    <button id="entradaA3" class="toggle-button">0</button>
+                </div>
+                <div class="input-group">
+                    <label for="entradaB3">B3 (MSB)</label>
+                    <button id="entradaB3" class="toggle-button">0</button>
+                </div>
+            </div>
+            <div class="resultados">
+                <p id="soma4Bits">Soma = </p>
+                <p id="carry4Bits">Carry = </p>
+            </div>
+            <div class="configuracao-interna">
+                <h2>Configuração Interna</h2>
+                <div class="somador-completo-cascata">
+                    <!-- Somadores completos em cascata -->
+                    <div class="somador">
+                        <span>Somador 1 (LSB)</span>
+                        <div class="porta-logica">
+                            <span>XOR</span>
+                        </div>
+                        <div class="porta-logica">
+                            <span>AND</span>
+                        </div>
+                        <div class="porta-logica">
+                            <span>OR</span>
+                        </div>
+                    </div>
+                    <div class="somador">
+                        <span>Somador Completo 2</span>
+                        <div class="porta-logica">
+                            <span>XOR</span>
+                        </div>
+                        <div class="porta-logica">
+                            <span>AND</span>
+                        </div>
+                        <div class="porta-logica">
+                            <span>OR</span>
+                        </div>
+                    </div>
+                    <div class="somador">
+                        <span>Somador Completo 3</span>
+                        <div class="porta-logica">
+                            <span>XOR</span>
+                        </div>
+                        <div class="porta-logica">
+                            <span>AND</span>
+                        </div>
+                        <div class="porta-logica">
+                            <span>OR</span>
+                        </div>
+                    </div>
+                    <div class="somador">
+                        <span>Somador 4 (MSB)</span>
+                        <div class="porta-logica">
+                            <span>XOR</span>
+                        </div>
+                        <div class="porta-logica">
+                            <span>AND</span>
+                        </div>
+                        <div class="porta-logica">
+                            <span>OR</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="js.js"></script>
 </body>
+
 </html>

@@ -65,6 +65,8 @@ function toggleButton(button) {
         calculaMeioSomador();
     } else if (button.id.includes("SC") || button.id.includes("Cin")) {
         calculaSomadorCompleto();
+    } else if (button.id.includes("A") || button.id.includes("B")) {
+        calculaSomador4Bits();
     }
 }
 
@@ -102,6 +104,41 @@ function calculaSomadorCompleto() {
     document.getElementById('carrySC').textContent += carry;
 }
 
+// Função para o Somador de 4 Bits
+function somador4Bits(a, b) {
+    let carry = 0;
+    let soma = [];
+    for (let i = 0; i < 4; i++) {
+        let resultado = somadorCompleto(a[i], b[i], carry);
+        soma.push(resultado[0]);
+        carry = resultado[1];
+    }
+    return [soma, carry];
+}
+
+// Função para calcular o Somador de 4 Bits
+function calculaSomador4Bits() {
+    let a = [
+        getButtonValue("entradaA0"),
+        getButtonValue("entradaA1"),
+        getButtonValue("entradaA2"),
+        getButtonValue("entradaA3")
+    ];
+    let b = [
+        getButtonValue("entradaB0"),
+        getButtonValue("entradaB1"),
+        getButtonValue("entradaB2"),
+        getButtonValue("entradaB3")
+    ];
+
+    let resultado = somador4Bits(a, b);
+    let soma = resultado[0].join("");
+    let carry = resultado[1];
+
+    document.getElementById('soma4Bits').textContent = "Soma = " + soma;
+    document.getElementById('carry4Bits').textContent = "Carry = " + carry;
+}
+
 // Adiciona event listeners aos botões
 document.getElementById('entradaAMS').addEventListener('click', function() {
     toggleButton(this);
@@ -123,6 +160,45 @@ document.getElementById('entradaCin').addEventListener('click', function() {
     toggleButton(this);
 });
 
+document.getElementById('entradaA0').addEventListener('click', function() {
+    toggleButton(this);
+});
+
+document.getElementById('entradaB0').addEventListener('click', function() {
+    toggleButton(this);
+});
+
+document.getElementById('entradaA1').addEventListener('click', function() {
+    toggleButton(this);
+});
+
+document.getElementById('entradaB1').addEventListener('click', function() {
+    toggleButton(this);
+});
+
+document.getElementById('entradaA2').addEventListener('click', function() {
+    toggleButton(this);
+});
+
+document.getElementById('entradaB2').addEventListener('click', function() {
+    toggleButton(this);
+});
+
+document.getElementById('entradaA3').addEventListener('click', function() {
+    toggleButton(this);
+});
+
+document.getElementById('entradaB3').addEventListener('click', function() {
+    toggleButton(this);
+});
+
+// Adiciona classes para identificar LSB e MSB
+document.getElementById('entradaA0').classList.add('lsb');
+document.getElementById('entradaB0').classList.add('lsb');
+document.getElementById('entradaA3').classList.add('msb');
+document.getElementById('entradaB3').classList.add('msb');
+
 // Inicializa os cálculos ao carregar a página
 calculaMeioSomador();
 calculaSomadorCompleto();
+calculaSomador4Bits();

@@ -32,7 +32,7 @@ h1 {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 25px;
     margin-bottom: 20px;
-    max-width: 400px;
+    max-width: 600px;
     width: 100%;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -42,17 +42,21 @@ h1 {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Estilo para os botões do Somador de 4 Bits */
 .input-row {
     display: flex;
     justify-content: space-between;
-    gap: 10px; /* Espaçamento entre os botões */
+    gap: 10px;
     margin-bottom: 15px;
 }
 
 .input-group {
-    text-align: center;
-    place-items: center;
-    flex: 1; /* Faz com que os grupos ocupem o espaço disponível */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-width: 80px; /* Largura mínima para evitar desalinhamento */
 }
 
 label {
@@ -60,6 +64,8 @@ label {
     margin-bottom: 8px;
     font-weight: 500;
     color: #4a5568;
+    text-align: center; /* Centraliza o texto */
+    white-space: nowrap; /* Impede que o texto quebre em várias linhas */
 }
 
 .toggle-button {
@@ -87,30 +93,6 @@ label {
     transform: scale(1.1);
 }
 
-.calculate-button {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    background-color: #667eea;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.calculate-button:hover {
-    background-color: #5a67d8;
-    transform: translateY(-2px);
-}
-
-.calculate-button:active {
-    transform: translateY(0);
-}
-
 .resultados {
     text-align: center;
     margin-top: 15px;
@@ -122,7 +104,69 @@ p {
     color: #4a5568;
 }
 
-#somaMS, #carryMS, #somaSC, #carrySC {
-    font-weight: 600;
-    color: #667eea;
+/* Estilo para a configuração interna do Somador de 4 Bits */
+.configuracao-interna {
+    margin-top: 20px;
+    text-align: center;
 }
+
+.somador-completo-cascata {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.somador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    background-color: #f0f4f8;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1; /* Faz com que todos os somadores tenham o mesmo tamanho */
+}
+
+.somador span {
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.porta-logica {
+    display: inline-block;
+    padding: 8px;
+    margin: 5px;
+    background-color: #e2e8f0;
+    border-radius: 6px;
+    font-weight: 600;
+    color: #4a5568;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.porta-logica.active {
+    background-color: #667eea;
+    color: white;
+}
+
+/* Estilo para rótulos de LSB e MSB */
+.label-lsb {
+    color: #28a745; /* Verde para LSB */
+    font-weight: 600;
+}
+
+.label-msb {
+    color: #dc3545; /* Vermelho para MSB */
+    font-weight: 600;
+}
+
+/* Estilo para os botões de LSB e MSB */
+.toggle-button.lsb {
+    border: 2px solid #28a745; /* Borda verde para LSB */
+}
+
+.toggle-button.msb {
+    border: 2px solid #dc3545; /* Borda vermelha para MSB */
+}
+

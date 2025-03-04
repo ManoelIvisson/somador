@@ -4,7 +4,7 @@ Este arquivo contém as informações e explicações para serem implementadas n
 
 ## Portas Lógicas
 
-São cirtuitos que operam com sinais digitais, realizando operações lógicas básicas e produzindo uma saída com base em suas entradas.
+São circuitos que operam com sinais digitais, realizando operações lógicas básicas e produzindo uma saída com base em suas entradas.
 
 ## Meio-Somador
 

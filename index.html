@@ -77,44 +77,45 @@
         </div>
 
         <!-- Somador de 4 Bits -->
+        <!-- Somador de 4 Bits -->
         <div class="circuito">
             <h1>Somador de 4 Bits</h1>
-            <!-- Primeira linha de inputs (A0, B0, A1, B1) -->
+            <!-- Primeira linha de inputs (A3, A2, A1, A0) -->
             <div class="input-row">
                 <div class="input-group">
-                    <label for="entradaA0">A0 (LSB)</label>
-                    <button id="entradaA0" class="toggle-button">0</button>
+                    <label for="entradaA3">A3 (MSB)</label>
+                    <button id="entradaA3" class="toggle-button">0</button>
                 </div>
                 <div class="input-group">
-                    <label for="entradaB0">B0 (LSB)</label>
-                    <button id="entradaB0" class="toggle-button">0</button>
+                    <label for="entradaA2">A2</label>
+                    <button id="entradaA2" class="toggle-button">0</button>
                 </div>
                 <div class="input-group">
                     <label for="entradaA1">A1</label>
                     <button id="entradaA1" class="toggle-button">0</button>
                 </div>
                 <div class="input-group">
-                    <label for="entradaB1">B1</label>
-                    <button id="entradaB1" class="toggle-button">0</button>
+                    <label for="entradaA0">A0 (LSB)</label>
+                    <button id="entradaA0" class="toggle-button">0</button>
                 </div>
             </div>
-            <!-- Segunda linha de inputs (A2, B2, A3, B3) -->
+            <!-- Segunda linha de inputs (B3, B2, B1, B0) -->
             <div class="input-row">
                 <div class="input-group">
-                    <label for="entradaA2">A2</label>
-                    <button id="entradaA2" class="toggle-button">0</button>
+                    <label for="entradaB3">B3 (MSB)</label>
+                    <button id="entradaB3" class="toggle-button">0</button>
                 </div>
                 <div class="input-group">
                     <label for="entradaB2">B2</label>
                     <button id="entradaB2" class="toggle-button">0</button>
                 </div>
                 <div class="input-group">
-                    <label for="entradaA3">A3 (MSB)</label>
-                    <button id="entradaA3" class="toggle-button">0</button>
+                    <label for="entradaB1">B1</label>
+                    <button id="entradaB1" class="toggle-button">0</button>
                 </div>
                 <div class="input-group">
-                    <label for="entradaB3">B3 (MSB)</label>
-                    <button id="entradaB3" class="toggle-button">0</button>
+                    <label for="entradaB0">B0 (LSB)</label>
+                    <button id="entradaB0" class="toggle-button">0</button>
                 </div>
             </div>
             <div class="resultados">
@@ -126,19 +127,7 @@
                 <div class="somador-completo-cascata">
                     <!-- Somadores completos em cascata -->
                     <div class="somador">
-                        <span>Somador 1 (LSB)</span>
-                        <div class="porta-logica">
-                            <span>XOR</span>
-                        </div>
-                        <div class="porta-logica">
-                            <span>AND</span>
-                        </div>
-                        <div class="porta-logica">
-                            <span>OR</span>
-                        </div>
-                    </div>
-                    <div class="somador">
-                        <span>Somador Completo 2</span>
+                        <span>Somador 4 (MSB)</span>
                         <div class="porta-logica">
                             <span>XOR</span>
                         </div>
@@ -162,7 +151,19 @@
                         </div>
                     </div>
                     <div class="somador">
-                        <span>Somador 4 (MSB)</span>
+                        <span>Somador Completo 2</span>
+                        <div class="porta-logica">
+                            <span>XOR</span>
+                        </div>
+                        <div class="porta-logica">
+                            <span>AND</span>
+                        </div>
+                        <div class="porta-logica">
+                            <span>OR</span>
+                        </div>
+                    </div>
+                    <div class="somador">
+                        <span>Somador 1 (LSB)</span>
                         <div class="porta-logica">
                             <span>XOR</span>
                         </div>

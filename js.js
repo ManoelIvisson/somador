@@ -132,7 +132,7 @@ function calculaSomador4Bits() {
     ];
 
     let resultado = somador4Bits(a, b);
-    let soma = resultado[0].join("");
+    let soma = resultado[0].reverse().join(""); // Inverte a ordem dos bits
     let carry = resultado[1];
 
     document.getElementById('soma4Bits').textContent = "Soma = " + soma;

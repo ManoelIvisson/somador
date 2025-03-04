@@ -116,21 +116,25 @@ function somador4Bits(a, b) {
     return [soma, carry];
 }
 
-// Função para calcular o Somador de 4 Bits
-function calculaSomador4Bits() {
-    let a = [
-        getButtonValue("entradaA0"),
-        getButtonValue("entradaA1"),
-        getButtonValue("entradaA2"),
-        getButtonValue("entradaA3")
-    ];
-    let b = [
-        getButtonValue("entradaB0"),
-        getButtonValue("entradaB1"),
-        getButtonValue("entradaB2"),
-        getButtonValue("entradaB3")
-    ];
+function getValoresEntrada() {
+    return {
+        a: [
+            getButtonValue("entradaA0"),
+            getButtonValue("entradaA1"),
+            getButtonValue("entradaA2"),
+            getButtonValue("entradaA3")
+        ],
+        b: [
+            getButtonValue("entradaB0"),
+            getButtonValue("entradaB1"),
+            getButtonValue("entradaB2"),
+            getButtonValue("entradaB3")
+        ]
+    };
+}
 
+function calculaSomador4Bits() {
+    let { a, b } = getValoresEntrada();
     let resultado = somador4Bits(a, b);
     let soma = resultado[0].reverse().join(""); // Inverte a ordem dos bits
     let carry = resultado[1];

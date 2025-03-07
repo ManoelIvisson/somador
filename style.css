@@ -184,39 +184,57 @@ p {
 }
 
 #botao-a1 {
-    top: 78.2%;
+    width: 27px;
+    top: 1134px;
+    left: 61px;
 }
 
 #botao-b1 {
-    top: 80.4%;
+    width: 27px;
+    top: 1166px;
+    left: 61px;
 }
 
 #botao-carry {
-    top: 83.7%;
+    width: 27px;
+    top: 1214px;
+    left: 61px;
 }
 
 #botao-a2 {
-    top: 56%;
+    width: 27px;
+    top: 812px;
+    left: 61px;
 }
 
 #botao-b2 {
-    top: 58.2%;
+    width: 27px;
+    top: 844px;
+    left: 61px;
 }
 
 #botao-a3 {
-    top: 33.8%;
+    width: 27px;
+    top: 490px;
+    left: 61px;
 }
 
 #botao-b3 {
-    top: 36%;
+    width: 27px;
+    top: 522px;
+    left: 61px;
 }
 
 #botao-a4 {
-    top: 11.7%;
+    width: 27px;
+    top: 169px;
+    left: 61px;
 }
 
 #botao-b4 {
-    top: 13.9%;
+    width: 27px;
+    top: 201px;
+    left: 61px;
 }
 
 .fio {

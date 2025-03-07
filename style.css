@@ -170,3 +170,19 @@ p {
     border: 2px solid #dc3545; /* Borda vermelha para MSB */
 }
 
+#container-raio-x {
+    position: relative;
+    height: 1450px;
+}
+
+.raio-x {
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.fio {
+    opacity: 50%;
+}

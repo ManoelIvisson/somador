@@ -206,3 +206,160 @@ document.getElementById('entradaB3').classList.add('msb');
 calculaMeioSomador();
 calculaSomadorCompleto();
 calculaSomador4Bits();
+
+class BotaoRaioX {
+    constructor (id, fio_afetado) {
+        this.id = id;
+        this.fio_afetado = fio_afetado;
+        this.portas_afetadas = [];
+        this.estado = false;
+    };
+
+    addPortas (portas_afetadas) {
+        portas_afetadas.forEach(porta => {
+            this.portas_afetadas.push(porta)
+        })
+    };
+
+    mudaEstado () {
+        if (this.estado) {
+            this.estado = false;
+            document.getElementById(this.id).src="img/botao-off.png";
+            document.getElementById(this.fio_afetado).style.opacity="50%";
+            this.portas_afetadas.forEach(porta => {
+                porta.mudaEstado()
+            });
+        } else {
+            this.estado = true;
+            document.getElementById(this.id).src="img/botao-on.png";
+            document.getElementById(this.fio_afetado).style.opacity="100%";
+            this.portas_afetadas.forEach(porta => {
+                porta.mudaEstado()
+            });
+        };
+    };
+};
+
+class portaAndRaioX {
+    constructor (entradas, saida) {
+        this.entradas = entradas;
+        this.saida = saida;
+        this.portas_afetadas = [];
+        this.estado = false;
+    };
+
+    addPortas (portas_afetadas) {
+        portas_afetadas.forEach(porta => {
+            this.portas_afetadas.push(porta)
+        })
+    };
+
+    mudaEstado () {
+        if (this.entradas[0].estado && this.entradas[1].estado) {
+            this.estado = true;
+            document.getElementById(this.saida).style.opacity="100%";
+            this.portas_afetadas.forEach(porta => {
+                porta.mudaEstado()
+            });
+        } else {
+            this.estado = false;
+            document.getElementById(this.saida).style.opacity="50%";
+            this.portas_afetadas.forEach(porta => {
+                porta.mudaEstado()
+            });
+        };
+    };
+};
+
+class portaOr3RaioX {
+    constructor (entradas, saida,  led=false) {
+        this.entradas = entradas;
+        this.saida = saida;
+        this.portas_afetadas = [];
+        this.estado = false;
+        this.led=led;
+    };
+
+    addPortas (portas_afetadas) {
+        portas_afetadas.forEach(porta => {
+            this.portas_afetadas.push(porta)
+        })
+    };
+
+    mudaEstado () {
+        if (this.entradas[0].estado || this.entradas[1].estado || this.entradas[2].estado) {
+            this.estado = true;
+            document.getElementById(this.saida).style.opacity="100%";
+            this.portas_afetadas.forEach(porta => {
+                porta.mudaEstado()
+            });
+        } else {
+            this.estado = false;
+            document.getElementById(this.saida).style.opacity="50%";
+            this.portas_afetadas.forEach(porta => {
+                porta.mudaEstado()
+            });
+        }
+    }
+};
+
+class portaXorRaioX {
+    constructor (entradas, saida, led=[false]) {
+        this.entradas = entradas;
+        this.saida = saida;
+        this.portas_afetadas = [];
+        this.estado = false;
+        this.led=led;
+    };
+
+    addPortas (portas_afetadas) {
+        portas_afetadas.forEach(porta => {
+            this.portas_afetadas.push(porta)
+        })
+    };
+
+    mudaEstado () {
+        if (this.entradas[0].estado != this.entradas[1].estado) {
+            this.estado = true;
+            document.getElementById(this.saida).style.opacity="100%";
+            if (this.led[0]) {
+                document.getElementById(this.led[1]).src = this.led[2];
+            }
+            this.portas_afetadas.forEach(porta => {
+                porta.mudaEstado()
+            });
+        } else {
+            this.estado = false;
+            document.getElementById(this.saida).style.opacity="50%";
+            if (this.led[0]) {
+                document.getElementById(this.led[1]).src = this.led[3];
+            }
+            this.portas_afetadas.forEach(porta => {
+                porta.mudaEstado()
+            });
+        }
+    }
+};
+
+botaoA1 = new BotaoRaioX("botao-a1", "fio-botao-a1");
+botaoB1 = new BotaoRaioX("botao-b1", "fio-botao-b1");
+botaoCarry = new BotaoRaioX("botao-carry", "fio-botao-carry");
+
+portaAndCima1 = new portaAndRaioX([botaoB1, botaoCarry], "saida-and-cima1");
+portaAndMeio1 = new portaAndRaioX([botaoA1, botaoB1], "saida-and-meio1");
+portaAndBaixo1 = new portaAndRaioX([botaoA1, botaoCarry], "saida-and-baixo1");
+
+portaOr1 = new portaOr3RaioX ([portaAndCima1, portaAndMeio1, portaAndBaixo1], "carry-entrada2")
+
+portaXorBaixo1 = new portaXorRaioX([botaoB1, botaoCarry], "saida-xor1")
+portaXorCima1 = new portaXorRaioX([botaoA1, portaXorBaixo1], "saida1", [true, "led1", "img/led1-on.png", "img/led1-off.png"])
+
+botaoA1.addPortas([portaAndMeio1, portaAndBaixo1, portaXorCima1]);
+botaoB1.addPortas([portaAndCima1, portaAndMeio1, portaXorBaixo1]);
+botaoCarry.addPortas([portaAndCima1, portaAndBaixo1, portaXorBaixo1]);
+
+portaAndCima1.addPortas([portaOr1])
+portaAndMeio1.addPortas([portaOr1])
+portaAndBaixo1.addPortas([portaOr1])
+
+portaXorBaixo1.addPortas([portaXorCima1])
